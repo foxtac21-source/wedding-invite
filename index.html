@@ -323,17 +323,16 @@
             transform: scale(1.01);
         }
 
-        /* радио-кнопки в одну строку */
+        /* радио-кнопки: каждая опция в отдельной строке, но текст внутри одной строки */
         .radio-group {
             display: flex;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 0.8rem;
             background: #ffffff;
             padding: 12px 20px;
             border-radius: 60px;
             border: 1px solid #e5d8cb;
             transition: all 0.3s;
-            justify-content: center;
-            flex-wrap: nowrap;
         }
 
         .radio-group:hover {
@@ -344,10 +343,10 @@
         .radio-group label {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-weight: normal;
             margin-bottom: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s;
             white-space: nowrap;
@@ -355,7 +354,7 @@
 
         .radio-group label:hover {
             color: #b87a4b;
-            transform: translateX(2px);
+            transform: translateX(5px);
         }
 
         button {
@@ -447,11 +446,11 @@
                 padding-left: 0.5rem;
             }
             .radio-group {
-                gap: 1rem;
-                flex-wrap: wrap;
+                padding: 12px 16px;
             }
             .radio-group label {
-                white-space: normal;
+                white-space: nowrap;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -529,7 +528,7 @@
             </div>
             <div class="dresscode-text">
                 Будем искренне рады видеть вас в том наряде, в котором вам комфортно и радостно.<br>
-                Лишь с небольшой просьбой — <strong>выбрать спокойные, нежные оттенки</strong>, чтобы наш праздник оставался лёгким и гармоничным.
+                Лишь с небольшой душевной просьбой — <strong>выбрать спокойные, нежные оттенки</strong>, чтобы наш праздник оставался лёгким и гармоничным.
             </div>
         </div>
     </div>
