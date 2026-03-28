@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Екатерина & Булат | Свадебное приглашение</title>
+    <title>Булат & Екатерина | Свадебное приглашение</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -25,18 +25,18 @@
         }
 
         /* декоративный фон */
-       body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(145deg, #fff9f2 0%, #fff5ec 100%);
-    opacity: 1;
-    pointer-events: none;
-    z-index: 0;
-}
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #fff9f2 0%, #fff5ec 100%);
+            opacity: 1;
+            pointer-events: none;
+            z-index: 0;
+        }
 
         .container {
             max-width: 620px;
@@ -106,7 +106,7 @@
         .delay-5 { animation-delay: 0.5s; }
         .delay-6 { animation-delay: 0.6s; }
 
-        /* имена */
+        /* имена — жених вперед */
         .names {
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.4rem;
@@ -141,7 +141,7 @@
             font-weight: 400;
         }
 
-        /* карточка локации с тенью и анимацией — теперь кликабельная */
+        /* карточка локации */
         .location-card {
             background: linear-gradient(135deg, #fffbf5, #fef7ef);
             border-radius: 28px;
@@ -161,7 +161,6 @@
             border-color: #e2d0be;
         }
 
-        /* добавляем легкий эффект наведения, указывающий на кликабельность */
         .location-card::after {
             content: '📍';
             position: absolute;
@@ -195,7 +194,7 @@
             margin-right: 6px;
         }
 
-        /* расписание — стилизованные карточки */
+        /* расписание */
         .schedule-grid {
             margin: 1.5rem 0;
         }
@@ -231,7 +230,7 @@
             font-size: 0.9rem;
         }
 
-        /* блок дресс-кода с золотым акцентом */
+        /* блок дресс-кода */
         .dresscode-block {
             background: linear-gradient(135deg, #fef9f2, #fbf4ea);
             border-radius: 24px;
@@ -324,6 +323,7 @@
             transform: scale(1.01);
         }
 
+        /* радио-кнопки в одну строку */
         .radio-group {
             display: flex;
             gap: 2rem;
@@ -332,6 +332,8 @@
             border-radius: 60px;
             border: 1px solid #e5d8cb;
             transition: all 0.3s;
+            justify-content: center;
+            flex-wrap: nowrap;
         }
 
         .radio-group:hover {
@@ -348,6 +350,7 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .radio-group label:hover {
@@ -447,6 +450,9 @@
                 gap: 1rem;
                 flex-wrap: wrap;
             }
+            .radio-group label {
+                white-space: normal;
+            }
         }
     </style>
 </head>
@@ -455,13 +461,13 @@
 <div class="container">
     <!-- главное фото с анимацией при наведении -->
     <div class="hero-image-wrapper">
-        <img src="blaka.jpg" alt="Екатерина и Булат" class="hero-image">
+        <img src="blaka.jpg" alt="Булат и Екатерина" class="hero-image">
         <div class="hero-overlay"></div>
     </div>
 
-    <!-- блок с именами и датой -->
+    <!-- блок с именами и датой — Булат & Екатерина -->
     <div class="content-block delay-1">
-        <div class="names">Екатерина & Булат</div>
+        <div class="names">Булат & Екатерина</div>
         <div class="date-badge">26 ИЮНЯ 2026</div>
         <div class="intro-text">
             Мы верим, что этот день станет красивым началом<br>
@@ -481,12 +487,12 @@
         </div>
     </div>
 
-    <!-- расписание -->
+    <!-- расписание — убрали "обнимаемся" -->
     <div class="content-block delay-3">
         <div class="schedule-grid">
             <div class="schedule-item">
                 <div class="schedule-time">14:00</div>
-                <div class="schedule-desc">встречаемся, знакомимся, обнимаемся</div>
+                <div class="schedule-desc">встречаемся, знакомимся</div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">14:30</div>
@@ -528,10 +534,10 @@
         </div>
     </div>
 
-    <!-- форма RSVP -->
+    <!-- форма RSVP — срок до 1 мая -->
     <div class="content-block delay-5">
         <div style="font-size: 0.85rem; margin-bottom: 1.2rem; color: #b87a4b; letter-spacing: 1px;">
-            <i class="far fa-calendar-check"></i> Пожалуйста, заполните анкету гостя до 1 июня 2026
+            <i class="far fa-calendar-check"></i> Пожалуйста, заполните анкету гостя до <strong>1 мая 2026</strong>
         </div>
         <form id="rsvpForm">
             <div class="form-group">
@@ -564,7 +570,7 @@
     </div>
 
     <div class="footer delay-6">
-        <i class="fas fa-heart"></i> Екатерина & Булат · 26.06.2026 · Усть-Курдюм <i class="fas fa-heart"></i>
+        <i class="fas fa-heart"></i> Булат & Екатерина · 26.06.2026 · Усть-Курдюм <i class="fas fa-heart"></i>
     </div>
 </div>
 
@@ -585,8 +591,8 @@
         });
     }
     
-    // ========== ФУНКЦИЯ ОТПРАВКИ В ЯНДЕКС ТАБЛИЦУ ЧЕРЕЗ ALBATO ==========
-    async function sendToYandexTable(name, attendance, comment) {
+    // ========== ФУНКЦИЯ ОТПРАВКИ В GOOGLE ТАБЛИЦУ ЧЕРЕЗ ALBATO ==========
+    async function sendToGoogleTable(name, attendance, comment) {
         try {
             const response = await fetch(ALBATO_WEBHOOK_URL, {
                 method: 'POST',
@@ -602,7 +608,7 @@
             });
             
             if (response.ok) {
-                console.log('✅ Данные отправлены в Яндекс Таблицу');
+                console.log('✅ Данные отправлены в Google Таблицу');
                 return true;
             } else {
                 console.log('❌ Ошибка отправки:', response.status);
@@ -677,13 +683,13 @@
         localStorage.setItem('wedding_final_att', selected);
         localStorage.setItem('wedding_final_comment', comment);
         
-        // Отправляем в Яндекс Таблицу через Albato
-        const sent = await sendToYandexTable(name, selected, comment);
+        // Отправляем в Google Таблицу через Albato
+        const sent = await sendToGoogleTable(name, selected, comment);
         
         if (sent) {
             showMessage(`${name}, спасибо! Ваш ответ: «${selected}». ${comment ? 'Ваше пожелание сохранено ♡' : ''} Данные отправлены в таблицу!`, true);
         } else {
-            showMessage(`${name}, спасибо! Ваш ответ сохранён локально. Не удалось отправить в таблицу, но мы получим данные позже.`, true);
+            showMessage(`${name}, спасибо! Ваш ответ сохранён локально. Мы получим данные позже.`, true);
         }
 
         const btn = document.getElementById('submitBtn');
