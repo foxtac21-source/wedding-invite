@@ -71,7 +71,6 @@
             transform: scale(1.02);
         }
 
-        /* золотой оверлей снизу */
         .hero-overlay {
             position: absolute;
             bottom: 0;
@@ -106,7 +105,6 @@
         .delay-5 { animation-delay: 0.5s; }
         .delay-6 { animation-delay: 0.6s; }
 
-        /* имена — жених вперед */
         .names {
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.4rem;
@@ -141,7 +139,56 @@
             font-weight: 400;
         }
 
-        /* карточка локации */
+        /* ========== ТАЙМЕР ========== */
+        .timer-wrapper {
+            background: linear-gradient(135deg, #fef7ef, #fff9f2);
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin: 1rem 0 1.5rem;
+            text-align: center;
+            border: 1px solid #f0e2d4;
+        }
+
+        .timer-title {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c2a07e;
+            margin-bottom: 1rem;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .timer-item {
+            background: white;
+            border-radius: 20px;
+            padding: 0.8rem 1rem;
+            min-width: 70px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0e2d4;
+        }
+
+        .timer-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #b87a4b;
+            font-family: 'Montserrat', monospace;
+            line-height: 1;
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #b28a62;
+            margin-top: 0.3rem;
+        }
+
+        /* локация */
         .location-card {
             background: linear-gradient(135deg, #fffbf5, #fef7ef);
             border-radius: 28px;
@@ -230,7 +277,7 @@
             font-size: 0.9rem;
         }
 
-        /* блок дресс-кода */
+        /* дресс-код */
         .dresscode-block {
             background: linear-gradient(135deg, #fef9f2, #fbf4ea);
             border-radius: 24px;
@@ -269,22 +316,13 @@
             gap: 8px;
         }
 
-        .dresscode-title i {
-            font-size: 1rem;
-        }
-
         .dresscode-text {
             font-size: 0.92rem;
             color: #5a4a38;
             line-height: 1.55;
         }
 
-        /* форма RSVP */
-        .rsvp-form {
-            margin-top: 1rem;
-            text-align: left;
-        }
-
+        /* форма */
         .form-group {
             margin-bottom: 1.3rem;
             opacity: 0;
@@ -305,7 +343,7 @@
             letter-spacing: 1px;
         }
 
-        input, select {
+        input {
             width: 100%;
             padding: 14px 18px;
             border: 1px solid #e5d8cb;
@@ -316,14 +354,13 @@
             transition: all 0.3s;
         }
 
-        input:focus, select:focus {
+        input:focus {
             outline: none;
             border-color: #c9aa7b;
             box-shadow: 0 0 0 3px rgba(201, 170, 123, 0.2);
             transform: scale(1.01);
         }
 
-        /* радио-кнопки: каждая опция в отдельной строке, но текст внутри одной строки */
         .radio-group {
             display: flex;
             flex-direction: column;
@@ -379,10 +416,6 @@
             box-shadow: 0 12px 24px rgba(184, 122, 75, 0.35);
         }
 
-        button:active {
-            transform: translateY(0);
-        }
-
         .form-message {
             margin-top: 1rem;
             padding: 12px;
@@ -395,7 +428,6 @@
             animation: fadeUp 0.3s ease;
         }
 
-        /* футер */
         .footer {
             text-align: center;
             padding: 1.8rem;
@@ -411,11 +443,6 @@
             transition: all 0.3s;
         }
 
-        .footer i:hover {
-            transform: scale(1.2);
-        }
-
-        /* декоративные элементы */
         .ornament {
             font-size: 1.2rem;
             letter-spacing: 6px;
@@ -433,6 +460,13 @@
             .names {
                 font-size: 2.5rem;
             }
+            .timer-number {
+                font-size: 1.6rem;
+            }
+            .timer-item {
+                min-width: 60px;
+                padding: 0.5rem 0.8rem;
+            }
             .schedule-item {
                 flex-direction: column;
                 align-items: flex-start;
@@ -442,15 +476,9 @@
             .schedule-time {
                 min-width: auto;
             }
-            .schedule-desc {
-                padding-left: 0.5rem;
-            }
-            .radio-group {
-                padding: 12px 16px;
-            }
             .radio-group label {
                 white-space: nowrap;
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -458,13 +486,13 @@
 <body>
 
 <div class="container">
-    <!-- главное фото с анимацией при наведении -->
+    <!-- главное фото -->
     <div class="hero-image-wrapper">
         <img src="blaka.jpg" alt="Булат и Екатерина" class="hero-image">
         <div class="hero-overlay"></div>
     </div>
 
-    <!-- блок с именами и датой — Булат & Екатерина -->
+    <!-- блок с именами и датой -->
     <div class="content-block delay-1">
         <div class="names">Булат & Екатерина</div>
         <div class="date-badge">26 ИЮНЯ 2026</div>
@@ -475,7 +503,7 @@
         <div class="ornament">✦ ✦ ✦</div>
     </div>
 
-    <!-- локация — кликабельная карточка -->
+    <!-- локация -->
     <div class="content-block delay-2" style="padding-top: 0;">
         <div class="location-card" id="locationCard">
             <div class="location-name">«Тритония»</div>
@@ -486,8 +514,35 @@
         </div>
     </div>
 
-    <!-- расписание — убрали "обнимаемся" -->
-    <div class="content-block delay-3">
+    <!-- ========== ТАЙМЕР ДО ТОРЖЕСТВА ========== -->
+    <div class="content-block delay-3" style="padding-top: 0;">
+        <div class="timer-wrapper">
+            <div class="timer-title">
+                <i class="far fa-hourglass-half"></i> До нашей свадьбы осталось
+            </div>
+            <div class="timer-grid" id="timerGrid">
+                <div class="timer-item">
+                    <div class="timer-number" id="days">00</div>
+                    <div class="timer-label">дней</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="hours">00</div>
+                    <div class="timer-label">часов</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="minutes">00</div>
+                    <div class="timer-label">минут</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="seconds">00</div>
+                    <div class="timer-label">секунд</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- расписание -->
+    <div class="content-block delay-4">
         <div class="schedule-grid">
             <div class="schedule-item">
                 <div class="schedule-time">14:00</div>
@@ -521,7 +576,7 @@
     </div>
 
     <!-- дресс-код -->
-    <div class="content-block delay-4">
+    <div class="content-block delay-5">
         <div class="dresscode-block">
             <div class="dresscode-title">
                 <i class="fas fa-feather-alt"></i> Дресс-код <i class="fas fa-feather-alt"></i>
@@ -533,8 +588,8 @@
         </div>
     </div>
 
-    <!-- форма RSVP — срок до 1 мая -->
-    <div class="content-block delay-5">
+    <!-- форма RSVP -->
+    <div class="content-block delay-6">
         <div style="font-size: 0.85rem; margin-bottom: 1.2rem; color: #b87a4b; letter-spacing: 1px;">
             <i class="far fa-calendar-check"></i> Пожалуйста, заполните анкету гостя до <strong>1 мая 2026</strong>
         </div>
@@ -568,18 +623,45 @@
         </div>
     </div>
 
-    <div class="footer delay-6">
+    <div class="footer">
         <i class="fas fa-heart"></i> Булат & Екатерина · 26.06.2026 · Усть-Курдюм <i class="fas fa-heart"></i>
     </div>
 </div>
 
 <script>
-    // ========== ВАШ WEBHOOK URL ОТ ALBATO ==========
+    // ========== ТАЙМЕР ДО 26 ИЮНЯ 2026 14:00 ==========
+    function updateTimer() {
+        const targetDate = new Date(2026, 5, 26, 14, 0, 0); // 26 июня 2026, 14:00
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+            document.getElementById('days').innerText = '00';
+            document.getElementById('hours').innerText = '00';
+            document.getElementById('minutes').innerText = '00';
+            document.getElementById('seconds').innerText = '00';
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / (3600000));
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+
+        document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+        document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+        document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // ========== ALBATO WEBHOOK URL ==========
     const ALBATO_WEBHOOK_URL = 'https://h.albato.ru/wh/38/1lfe9dn/toNai0Rf0Va3S2ajIxbZE1taAfiMcNEif1UOAfMPZl4/';
     
-    // ========== КЛИКАБЕЛЬНАЯ КАРТОЧКА С КАРТОЙ ==========
+    // ========== КЛИКАБЕЛЬНАЯ КАРТОЧКА ==========
     const locationCard = document.getElementById('locationCard');
-    
     if (locationCard) {
         locationCard.addEventListener('click', function(e) {
             e.preventDefault();
@@ -590,14 +672,12 @@
         });
     }
     
-    // ========== ФУНКЦИЯ ОТПРАВКИ В GOOGLE ТАБЛИЦУ ЧЕРЕЗ ALBATO ==========
+    // ========== ОТПРАВКА В ТАБЛИЦУ ==========
     async function sendToGoogleTable(name, attendance, comment) {
         try {
             const response = await fetch(ALBATO_WEBHOOK_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     timestamp: new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }),
                     name: name,
@@ -605,16 +685,9 @@
                     comment: comment || ''
                 })
             });
-            
-            if (response.ok) {
-                console.log('✅ Данные отправлены в Google Таблицу');
-                return true;
-            } else {
-                console.log('❌ Ошибка отправки:', response.status);
-                return false;
-            }
+            return response.ok;
         } catch (error) {
-            console.log('❌ Ошибка соединения:', error);
+            console.log('Ошибка:', error);
             return false;
         }
     }
@@ -677,25 +750,21 @@
         
         const comment = commentInput.value.trim();
 
-        // Сохраняем в localStorage
         localStorage.setItem('wedding_final_name', name);
         localStorage.setItem('wedding_final_att', selected);
         localStorage.setItem('wedding_final_comment', comment);
         
-        // Отправляем в Google Таблицу через Albato
         const sent = await sendToGoogleTable(name, selected, comment);
         
         if (sent) {
-            showMessage(`${name}, спасибо! Ваш ответ: «${selected}». ${comment ? 'Ваше пожелание сохранено ♡' : ''} Данные отправлены в таблицу!`, true);
+            showMessage(`${name}, спасибо! Ваш ответ: «${selected}». ${comment ? 'Ваше пожелание сохранено ♡' : ''} Данные отправлены!`, true);
         } else {
-            showMessage(`${name}, спасибо! Ваш ответ сохранён локально. Мы получим данные позже.`, true);
+            showMessage(`${name}, спасибо! Ваш ответ сохранён локально.`, true);
         }
 
         const btn = document.getElementById('submitBtn');
         btn.style.transform = 'scale(0.97)';
         setTimeout(() => { btn.style.transform = ''; }, 200);
-
-        console.log(`RSVP: ${name} | ${selected} | ${comment}`);
     });
 
     // анимация скролла
@@ -708,7 +777,6 @@
             }
         });
     }, { threshold: 0.1 });
-
     blocks.forEach(block => observer.observe(block));
 </script>
 </body>
