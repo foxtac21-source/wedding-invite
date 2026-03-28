@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Екатерина & Булат | Свадебное приглашение</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5efe7;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* декоративный фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('фон.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 620px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            background: #ffffff;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* ========== ГЛАВНОЕ ФОТО С АНИМАЦИЕЙ ========== */
+        .hero-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            display: block;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center 30%;
+            transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+        }
+
+        .hero-image-wrapper:hover .hero-image {
+            transform: scale(1.02);
+        }
+
+        /* золотой оверлей снизу */
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, rgba(255,255,245,0.9), transparent);
+            pointer-events: none;
+        }
+
+        /* ========== КОНТЕНТНЫЕ БЛОКИ ========== */
+        .content-block {
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #f0e8df;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+
+        /* имена */
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #b87a4b, #8b5a2e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: #f8f1e8;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #b87a4b;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ede0d2;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #5a4a38;
+            max-width: 90%;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* карточка локации с тенью и анимацией — теперь кликабельная */
+        .location-card {
+            background: linear-gradient(135deg, #fffbf5, #fef7ef);
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            text-align: center;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s;
+            border: 1px solid #f1e6db;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            border-color: #e2d0be;
+        }
+
+        /* добавляем легкий эффект наведения, указывающий на кликабельность */
+        .location-card::after {
+            content: '📍';
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .location-card:hover::after {
+            opacity: 0.6;
+        }
+
+        .location-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #b87a4b;
+            margin-bottom: 0.5rem;
+        }
+
+        .address {
+            color: #7f6a50;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .address i {
+            color: #c9aa7b;
+            margin-right: 6px;
+        }
+
+        /* расписание — стилизованные карточки */
+        .schedule-grid {
+            margin: 1.5rem 0;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px dashed #efe3d6;
+            transition: all 0.3s;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(5px);
+            background: rgba(201, 170, 123, 0.03);
+            padding-left: 10px;
+        }
+
+        .schedule-time {
+            font-weight: 700;
+            color: #b87a4b;
+            min-width: 85px;
+            font-family: 'Montserrat', monospace;
+            font-size: 0.95rem;
+        }
+
+        .schedule-desc {
+            color: #5a4a38;
+            text-align: left;
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        /* блок дресс-кода с золотым акцентом */
+        .dresscode-block {
+            background: linear-gradient(135deg, #fef9f2, #fbf4ea);
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .dresscode-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #b87a4b, #e6c8a8);
+        }
+
+        .dresscode-block:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .dresscode-title {
+            font-weight: 600;
+            color: #b87a4b;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dresscode-title i {
+            font-size: 1rem;
+        }
+
+        .dresscode-text {
+            font-size: 0.92rem;
+            color: #5a4a38;
+            line-height: 1.55;
+        }
+
+        /* форма RSVP */
+        .rsvp-form {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.2s; }
+        .form-group:nth-child(2) { animation-delay: 0.3s; }
+        .form-group:nth-child(3) { animation-delay: 0.4s; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #b87a4b;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e5d8cb;
+            border-radius: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #c9aa7b;
+            box-shadow: 0 0 0 3px rgba(201, 170, 123, 0.2);
+            transform: scale(1.01);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            background: #ffffff;
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: 1px solid #e5d8cb;
+            transition: all 0.3s;
+        }
+
+        .radio-group:hover {
+            border-color: #c9aa7b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: normal;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-group label:hover {
+            color: #b87a4b;
+            transform: translateX(2px);
+        }
+
+        button {
+            background: linear-gradient(135deg, #b87a4b, #9b623a);
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.8rem;
+            box-shadow: 0 6px 14px rgba(184, 122, 75, 0.25);
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #c98b5a, #ae6e42);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(184, 122, 75, 0.35);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 12px;
+            border-radius: 60px;
+            text-align: center;
+            background: #f0ede5;
+            color: #6f4e2e;
+            font-size: 0.85rem;
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+
+        /* футер */
+        .footer {
+            text-align: center;
+            padding: 1.8rem;
+            font-size: 0.7rem;
+            color: #b8a688;
+            background: #fefcf9;
+            border-top: 1px solid #f0e8df;
+        }
+
+        .footer i {
+            color: #c9aa7b;
+            margin: 0 4px;
+            transition: all 0.3s;
+        }
+
+        .footer i:hover {
+            transform: scale(1.2);
+        }
+
+        /* декоративные элементы */
+        .ornament {
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            color: #e5cfb5;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 24px;
+            }
+            .content-block {
+                padding: 1.5rem;
+            }
+            .names {
+                font-size: 2.5rem;
+            }
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+                padding: 0.8rem 0;
+            }
+            .schedule-time {
+                min-width: auto;
+            }
+            .schedule-desc {
+                padding-left: 0.5rem;
+            }
+            .radio-group {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- главное фото с анимацией при наведении -->
+    <div class="hero-image-wrapper">
+        <img src="blaka.jpg" alt="Екатерина и Булат" class="hero-image">
+        <div class="hero-overlay"></div>
+    </div>
+
+    <!-- блок с именами и датой -->
+    <div class="content-block delay-1">
+        <div class="names">Екатерина & Булат</div>
+        <div class="date-badge">26 ИЮНЯ 2026</div>
+        <div class="intro-text">
+            Мы верим, что этот день станет красивым началом<br>
+            нашей счастливой совместной жизни.
+        </div>
+        <div class="ornament">✦ ✦ ✦</div>
+    </div>
+
+    <!-- локация — кликабельная карточка -->
+    <div class="content-block delay-2" style="padding-top: 0;">
+        <div class="location-card" id="locationCard">
+            <div class="location-name">«Тритония»</div>
+            <div class="address">
+                <i class="fas fa-map-marker-alt"></i> Большая Советская ул., 110/1<br>
+                село Усть-Курдюм
+            </div>
+        </div>
+    </div>
+
+    <!-- расписание -->
+    <div class="content-block delay-3">
+        <div class="schedule-grid">
+            <div class="schedule-item">
+                <div class="schedule-time">14:00</div>
+                <div class="schedule-desc">встречаемся, знакомимся, обнимаемся</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">14:30</div>
+                <div class="schedule-desc">тост от родителей</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">15:00</div>
+                <div class="schedule-desc">тост от гостей, поздравления + антракт</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">16:00</div>
+                <div class="schedule-desc">выступления, конкурсы, живая атмосфера</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">17:00</div>
+                <div class="schedule-desc">сладкая традиция, без которой не обойтись — торт</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">18:30</div>
+                <div class="schedule-desc">дискотека, танцы до вечера</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">22:00</div>
+                <div class="schedule-desc">даже такой прекрасный вечер может закончиться</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- дресс-код -->
+    <div class="content-block delay-4">
+        <div class="dresscode-block">
+            <div class="dresscode-title">
+                <i class="fas fa-feather-alt"></i> Дресс-код <i class="fas fa-feather-alt"></i>
+            </div>
+            <div class="dresscode-text">
+                Будем искренне рады видеть вас в том наряде, в котором вам комфортно и радостно.<br>
+                Лишь с небольшой душевной просьбой — <strong>выбрать спокойные, нежные оттенки</strong>, чтобы наш праздник оставался лёгким и гармоничным.
+            </div>
+        </div>
+    </div>
+
+    <!-- форма RSVP -->
+    <div class="content-block delay-5">
+        <div style="font-size: 0.85rem; margin-bottom: 1.2rem; color: #b87a4b; letter-spacing: 1px;">
+            <i class="far fa-calendar-check"></i> Пожалуйста, заполните анкету гостя до 1 июня 2026
+        </div>
+        <form id="rsvpForm">
+            <div class="form-group">
+                <label>Ваше имя</label>
+                <input type="text" id="guestName" placeholder="Например: Александр и Елена" required>
+            </div>
+            <div class="form-group">
+                <label>Планируете ли присутствовать на свадьбе?</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="attendance" value="С радостью приду! ✨" required> <span>✨ Да, буду</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="attendance" value="К сожалению, не смогу 🌿"> <span>🌿 Не смогу</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Пожелания или комментарий</label>
+                <input type="text" id="comment" placeholder="Ваши тёплые слова...">
+            </div>
+            <button type="submit" id="submitBtn">
+                <i class="fas fa-envelope"></i> Отправить подтверждение
+            </button>
+            <div id="formMessage" class="form-message"></div>
+        </form>
+        <div style="margin-top: 1rem; font-size: 0.7rem; color: #c9aa7b; text-align: center;">
+            Спасибо! Ваши данные отправлены!
+        </div>
+    </div>
+
+    <div class="footer delay-6">
+        <i class="fas fa-heart"></i> Екатерина & Булат · 26.06.2026 · Усть-Курдюм <i class="fas fa-heart"></i>
+    </div>
+</div>
+
+<script>
+    // ========== ВАШ WEBHOOK URL ОТ ALBATO ==========
+    const ALBATO_WEBHOOK_URL = 'https://h.albato.ru/wh/38/1lfe9dn/toNai0Rf0Va3S2ajIxbZE1taAfiMcNEif1UOAfMPZl4/';
+    
+    // ========== КЛИКАБЕЛЬНАЯ КАРТОЧКА С КАРТОЙ ==========
+    const locationCard = document.getElementById('locationCard');
+    
+    if (locationCard) {
+        locationCard.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lat = 51.653947;
+            const lng = 46.187279;
+            const address = encodeURIComponent('Саратовская область, село Усть-Курдюм, Большая Советская улица, 110/1');
+            window.open(`https://yandex.ru/maps/?pt=${lng},${lat}&z=18&l=map&text=${address}`, '_blank');
+        });
+    }
+    
+    // ========== ФУНКЦИЯ ОТПРАВКИ В ЯНДЕКС ТАБЛИЦУ ЧЕРЕЗ ALBATO ==========
+    async function sendToYandexTable(name, attendance, comment) {
+        try {
+            const response = await fetch(ALBATO_WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    timestamp: new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }),
+                    name: name,
+                    attendance: attendance,
+                    comment: comment || ''
+                })
+            });
+            
+            if (response.ok) {
+                console.log('✅ Данные отправлены в Яндекс Таблицу');
+                return true;
+            } else {
+                console.log('❌ Ошибка отправки:', response.status);
+                return false;
+            }
+        } catch (error) {
+            console.log('❌ Ошибка соединения:', error);
+            return false;
+        }
+    }
+    
+    // ========== RSVP ЛОГИКА ==========
+    const form = document.getElementById('rsvpForm');
+    const messageDiv = document.getElementById('formMessage');
+    const nameInput = document.getElementById('guestName');
+    const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+    const commentInput = document.getElementById('comment');
+
+    function showMessage(text, isSuccess = true) {
+        messageDiv.style.display = 'block';
+        messageDiv.textContent = text;
+        messageDiv.style.backgroundColor = isSuccess ? '#e9e0d3' : '#f3e0d4';
+        messageDiv.style.color = '#6f4e2e';
+        setTimeout(() => {
+            if (messageDiv.textContent === text) {
+                messageDiv.style.opacity = '0';
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                    messageDiv.style.opacity = '';
+                }, 400);
+            }
+        }, 4500);
+    }
+
+    // загрузка сохранённых данных
+    const savedName = localStorage.getItem('wedding_final_name');
+    const savedAtt = localStorage.getItem('wedding_final_att');
+    const savedComment = localStorage.getItem('wedding_final_comment');
+    if (savedName) nameInput.value = savedName;
+    if (savedComment) commentInput.value = savedComment;
+    if (savedAtt) {
+        for (let radio of attendanceRadios) {
+            if (radio.value === savedAtt) radio.checked = true;
+        }
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = nameInput.value.trim();
+        if (!name) {
+            showMessage('Пожалуйста, укажите ваше имя', false);
+            return;
+        }
+        
+        let selected = null;
+        for (let radio of attendanceRadios) {
+            if (radio.checked) {
+                selected = radio.value;
+                break;
+            }
+        }
+        if (!selected) {
+            showMessage('Выберите, будете ли вы на свадьбе', false);
+            return;
+        }
+        
+        const comment = commentInput.value.trim();
+
+        // Сохраняем в localStorage
+        localStorage.setItem('wedding_final_name', name);
+        localStorage.setItem('wedding_final_att', selected);
+        localStorage.setItem('wedding_final_comment', comment);
+        
+        // Отправляем в Яндекс Таблицу через Albato
+        const sent = await sendToYandexTable(name, selected, comment);
+        
+        if (sent) {
+            showMessage(`${name}, спасибо! Ваш ответ: «${selected}». ${comment ? 'Ваше пожелание сохранено ♡' : ''} Данные отправлены в таблицу!`, true);
+        } else {
+            showMessage(`${name}, спасибо! Ваш ответ сохранён локально. Не удалось отправить в таблицу, но мы получим данные позже.`, true);
+        }
+
+        const btn = document.getElementById('submitBtn');
+        btn.style.transform = 'scale(0.97)';
+        setTimeout(() => { btn.style.transform = ''; }, 200);
+
+        console.log(`RSVP: ${name} | ${selected} | ${comment}`);
+    });
+
+    // анимация скролла
+    const blocks = document.querySelectorAll('.content-block');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    blocks.forEach(block => observer.observe(block));
+</script>
+</body>
+</html>
