@@ -47,13 +47,11 @@
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 30px 50px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
         }
 
         .hero-image-wrapper {
             position: relative;
             overflow: hidden;
-            height: auto;
         }
 
         .hero-image {
@@ -63,10 +61,6 @@
             object-fit: cover;
             object-position: center 30%;
             transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-        }
-
-        .hero-image-wrapper:hover .hero-image {
-            transform: scale(1.02);
         }
 
         .hero-overlay {
@@ -194,27 +188,11 @@
             transition: all 0.4s;
             border: 1px solid #f1e6db;
             cursor: pointer;
-            position: relative;
         }
 
         .location-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
-            border-color: #e2d0be;
-        }
-
-        .location-card::after {
-            content: '📍';
-            position: absolute;
-            bottom: 12px;
-            right: 16px;
-            font-size: 1.2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .location-card:hover::after {
-            opacity: 0.6;
         }
 
         .location-name {
@@ -236,7 +214,7 @@
             margin-right: 6px;
         }
 
-        /* НОВОЕ ПРОСТОЕ РАСПИСАНИЕ — только 3 пункта */
+        /* расписание — только нужные пункты с оригинальными текстами */
         .schedule-simple {
             margin: 1.5rem 0;
             display: flex;
@@ -254,25 +232,18 @@
             border: 1px solid #f0e2d4;
             transition: all 0.25s;
         }
-        .schedule-simple-item:hover {
-            background: #fffaf2;
-            transform: translateX(5px);
-            border-color: #dac8b4;
-        }
         .schedule-simple-time {
             font-weight: 700;
             color: #b87a4b;
             min-width: 75px;
             font-family: 'Montserrat', monospace;
             font-size: 1.1rem;
-            letter-spacing: 1px;
         }
         .schedule-simple-desc {
             color: #5a4a38;
             text-align: left;
             flex: 1;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .dresscode-block {
@@ -282,7 +253,6 @@
             margin: 1.2rem 0;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s;
         }
 
         .dresscode-block::before {
@@ -293,11 +263,6 @@
             width: 4px;
             height: 100%;
             background: linear-gradient(to bottom, #b87a4b, #e6c8a8);
-        }
-
-        .dresscode-block:hover {
-            transform: translateX(5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
         .dresscode-title {
@@ -319,18 +284,11 @@
             line-height: 1.55;
         }
 
-        /* ========== ФОРМА - ИДЕАЛЬНО ДЛЯ МОБИЛЬНЫХ ========== */
+        /* форма — радио-кнопка слева, текст справа */
         .form-group {
             margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.5s ease forwards;
             text-align: left;
         }
-
-        .form-group:nth-child(1) { animation-delay: 0.2s; }
-        .form-group:nth-child(2) { animation-delay: 0.3s; }
-        .form-group:nth-child(3) { animation-delay: 0.4s; }
 
         .form-group label {
             display: block;
@@ -338,10 +296,9 @@
             font-weight: 600;
             color: #b87a4b;
             margin-bottom: 0.65rem;
-            letter-spacing: 0.5px;
         }
 
-        input, .comment-input {
+        input {
             width: 100%;
             padding: 14px 18px;
             border: 1px solid #e5d8cb;
@@ -349,34 +306,27 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
             background: white;
-            transition: all 0.3s;
         }
 
-        input:focus, .comment-input:focus {
+        input:focus {
             outline: none;
             border-color: #c9aa7b;
-            box-shadow: 0 0 0 3px rgba(201, 170, 123, 0.2);
-            transform: scale(1.01);
         }
 
-        /* Универсальная группа radio — кнопка слева, текст справа, отлично на любом экране */
         .radio-group-modern {
             background: #ffffff;
             border-radius: 28px;
             border: 1px solid #e5d8cb;
-            padding: 0.5rem 0;
-            transition: all 0.2s;
+            padding: 0.25rem 0;
         }
 
         .radio-option {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 12px 20px;
+            gap: 12px;
+            padding: 12px 18px;
             cursor: pointer;
-            transition: background 0.2s ease;
             border-radius: 40px;
-            margin: 0;
         }
 
         .radio-option:hover {
@@ -389,20 +339,16 @@
             margin: 0;
             flex-shrink: 0;
             accent-color: #b87a4b;
-            cursor: pointer;
         }
 
         .radio-option .radio-text {
             font-size: 1rem;
             font-weight: 500;
             color: #4d3e2c;
-            line-height: 1.3;
-            letter-spacing: 0.2px;
-            flex: 1;
             text-align: left;
+            flex: 1;
         }
 
-        /* кнопка */
         button {
             background: linear-gradient(135deg, #b87a4b, #9b623a);
             border: none;
@@ -415,15 +361,11 @@
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 0.8rem;
-            box-shadow: 0 6px 14px rgba(184, 122, 75, 0.25);
-            letter-spacing: 1px;
-            font-family: 'Montserrat', sans-serif;
         }
 
         button:hover {
             background: linear-gradient(135deg, #c98b5a, #ae6e42);
             transform: translateY(-3px);
-            box-shadow: 0 12px 24px rgba(184, 122, 75, 0.35);
         }
 
         .form-message {
@@ -435,7 +377,6 @@
             color: #6f4e2e;
             font-size: 0.85rem;
             display: none;
-            animation: fadeUp 0.3s ease;
         }
 
         .footer {
@@ -447,12 +388,6 @@
             border-top: 1px solid #f0e8df;
         }
 
-        .footer i {
-            color: #c9aa7b;
-            margin: 0 4px;
-            transition: all 0.3s;
-        }
-
         .ornament {
             font-size: 1.2rem;
             letter-spacing: 6px;
@@ -460,11 +395,7 @@
             margin: 1rem 0;
         }
 
-        /* адаптив для малых экранов */
         @media (max-width: 600px) {
-            .container {
-                border-radius: 24px;
-            }
             .content-block {
                 padding: 1.5rem;
             }
@@ -478,47 +409,19 @@
                 min-width: 60px;
                 padding: 0.5rem 0.8rem;
             }
-            .schedule-simple-item {
-                padding: 0.85rem 1rem;
-                gap: 0.8rem;
-            }
             .schedule-simple-time {
-                min-width: 68px;
+                min-width: 65px;
                 font-size: 1rem;
             }
             .schedule-simple-desc {
-                font-size: 0.92rem;
+                font-size: 0.85rem;
             }
-            .radio-option {
-                padding: 10px 16px;
-                gap: 12px;
-            }
-            .radio-option .radio-text {
-                font-size: 0.95rem;
-            }
-            input, .comment-input {
-                padding: 12px 16px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* для очень узких телефонов (iPhone SE и т.п.) */
-        @media (max-width: 450px) {
             .radio-option {
                 padding: 10px 14px;
                 gap: 10px;
             }
             .radio-option .radio-text {
-                font-size: 0.9rem;
-                white-space: normal;
-                word-break: break-word;
-            }
-            .schedule-simple-time {
-                min-width: 60px;
-                font-size: 0.9rem;
-            }
-            .schedule-simple-desc {
-                font-size: 0.85rem;
+                font-size: 0.92rem;
             }
         }
     </style>
@@ -526,13 +429,11 @@
 <body>
 
 <div class="container">
-    <!-- главное фото -->
     <div class="hero-image-wrapper">
         <img src="blaka.jpg" alt="Булат и Екатерина" class="hero-image">
         <div class="hero-overlay"></div>
     </div>
 
-    <!-- имена и дата -->
     <div class="content-block delay-1">
         <div class="names">Булат & Екатерина</div>
         <div class="date-badge">26 ИЮНЯ 2026</div>
@@ -543,7 +444,6 @@
         <div class="ornament">✦ ✦ ✦</div>
     </div>
 
-    <!-- локация -->
     <div class="content-block delay-2" style="padding-top: 0;">
         <div class="location-card" id="locationCard">
             <div class="location-name">«Тритония»</div>
@@ -554,55 +454,38 @@
         </div>
     </div>
 
-    <!-- таймер -->
     <div class="content-block delay-3" style="padding-top: 0;">
         <div class="timer-wrapper">
             <div class="timer-title">
                 <i class="far fa-hourglass-half"></i> До нашей свадьбы осталось
             </div>
             <div class="timer-grid" id="timerGrid">
-                <div class="timer-item">
-                    <div class="timer-number" id="days">00</div>
-                    <div class="timer-label">дней</div>
-                </div>
-                <div class="timer-item">
-                    <div class="timer-number" id="hours">00</div>
-                    <div class="timer-label">часов</div>
-                </div>
-                <div class="timer-item">
-                    <div class="timer-number" id="minutes">00</div>
-                    <div class="timer-label">минут</div>
-                </div>
-                <div class="timer-item">
-                    <div class="timer-number" id="seconds">00</div>
-                    <div class="timer-label">секунд</div>
-                </div>
+                <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">дней</div></div>
+                <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">часов</div></div>
+                <div class="timer-item"><div class="timer-number" id="minutes">00</div><div class="timer-label">минут</div></div>
+                <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">секунд</div></div>
             </div>
         </div>
     </div>
 
-    <!-- ========== НОВОЕ РАСПИСАНИЕ ТОЛЬКО 3 ПУНКТА ========== -->
+    <!-- расписание: только 14:00, 17:00, 22:00 с оригинальными текстами -->
     <div class="content-block delay-4">
         <div class="schedule-simple">
             <div class="schedule-simple-item">
                 <div class="schedule-simple-time">14:00</div>
-                <div class="schedule-simple-desc">✨ Торжественное начало, встреча гостей</div>
+                <div class="schedule-simple-desc">встречаемся, знакомимся</div>
             </div>
             <div class="schedule-simple-item">
                 <div class="schedule-simple-time">17:00</div>
-                <div class="schedule-simple-desc">🎶 Дискотека, танцы, живая атмосфера</div>
+                <div class="schedule-simple-desc">сладкая традиция, без которой не обойтись — торт</div>
             </div>
             <div class="schedule-simple-item">
                 <div class="schedule-simple-time">22:00</div>
-                <div class="schedule-simple-desc">🌙 Завершение вечера, финальный аккорд</div>
+                <div class="schedule-simple-desc">даже такой прекрасный вечер может закончиться</div>
             </div>
-        </div>
-        <div style="font-size: 0.75rem; color: #c7aa88; margin-top: 0.5rem;">
-            <i class="fas fa-music"></i> Остальное время — отдых, общение и наши искренние эмоции
         </div>
     </div>
 
-    <!-- дресс-код -->
     <div class="content-block delay-5">
         <div class="dresscode-block">
             <div class="dresscode-title">
@@ -615,32 +498,32 @@
         </div>
     </div>
 
-    <!-- форма RSVP с идеальным расположением радио-кнопок -->
+    <!-- форма с радиокнопками: слева кнопка, справа текст "Да, буду" / "Не смогу" -->
     <div class="content-block delay-6">
-        <div style="font-size: 0.85rem; margin-bottom: 1.2rem; color: #b87a4b; letter-spacing: 1px; text-align: center;">
+        <div style="font-size: 0.85rem; margin-bottom: 1.2rem; color: #b87a4b; text-align: center;">
             <i class="far fa-calendar-check"></i> Пожалуйста, заполните анкету гостя до <strong>1 мая 2026</strong>
         </div>
         <form id="rsvpForm">
             <div class="form-group">
-                <label><i class="fas fa-user-pen"></i> Ваше имя</label>
+                <label>Ваше имя</label>
                 <input type="text" id="guestName" placeholder="Например: Александр и Елена" required>
             </div>
             <div class="form-group">
-                <label><i class="fas fa-calendar-day"></i> Планируете ли присутствовать?</label>
-                <div class="radio-group-modern" id="radioGroup">
+                <label>Планируете ли присутствовать на свадьбе?</label>
+                <div class="radio-group-modern">
                     <label class="radio-option">
                         <input type="radio" name="attendance" value="С радостью приду! ✨" required>
-                        <span class="radio-text">✨ Да, буду — разделю с вами этот день</span>
+                        <span class="radio-text">✨ Да, буду</span>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="attendance" value="К сожалению, не смогу 🌿">
-                        <span class="radio-text">🌿 Не смогу, но буду рядом мысленно</span>
+                        <span class="radio-text">🌿 Не смогу</span>
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <label><i class="fas fa-heart"></i> Пожелания или комментарий</label>
-                <input type="text" id="comment" class="comment-input" placeholder="Ваши тёплые слова, особые пожелания...">
+                <label>Пожелания или комментарий</label>
+                <input type="text" id="comment" placeholder="Ваши тёплые слова...">
             </div>
             <button type="submit" id="submitBtn">
                 <i class="fas fa-envelope"></i> Отправить подтверждение
@@ -648,7 +531,7 @@
             <div id="formMessage" class="form-message"></div>
         </form>
         <div style="margin-top: 1rem; font-size: 0.7rem; color: #c9aa7b; text-align: center;">
-            <i class="fas fa-check-circle"></i> Ваш ответ сохранится и попадёт в нашу семейную таблицу
+            Спасибо! Ваши данные отправлены!
         </div>
     </div>
 
@@ -658,7 +541,6 @@
 </div>
 
 <script>
-    // ========== ТАЙМЕР ДО 26 ИЮНЯ 2026 14:00 ==========
     function updateTimer() {
         const targetDate = new Date(2026, 5, 26, 14, 0, 0);
         const now = new Date();
@@ -686,14 +568,11 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
-    // ========== ALBATO WEBHOOK (ВАШ URL) ==========
     const ALBATO_WEBHOOK_URL = 'https://h.albato.ru/wh/38/1lfe9dn/toNai0Rf0Va3S2ajIxbZE1taAfiMcNEif1UOAfMPZl4/';
     
-    // ========== КЛИКАБЕЛЬНАЯ КАРТОЧКА ЛОКАЦИИ ==========
     const locationCard = document.getElementById('locationCard');
     if (locationCard) {
-        locationCard.addEventListener('click', function(e) {
-            e.preventDefault();
+        locationCard.addEventListener('click', function() {
             const lat = 51.653947;
             const lng = 46.187279;
             const address = encodeURIComponent('Саратовская область, село Усть-Курдюм, Большая Советская улица, 110/1');
@@ -701,7 +580,6 @@
         });
     }
     
-    // ========== ОТПРАВКА В ТАБЛИЦУ (ALBATO) ==========
     async function sendToGoogleTable(name, attendance, comment) {
         try {
             const response = await fetch(ALBATO_WEBHOOK_URL, {
@@ -716,12 +594,10 @@
             });
             return response.ok;
         } catch (error) {
-            console.log('Ошибка отправки:', error);
             return false;
         }
     }
     
-    // ========== RSVP ЛОГИКА ==========
     const form = document.getElementById('rsvpForm');
     const messageDiv = document.getElementById('formMessage');
     const nameInput = document.getElementById('guestName');
@@ -732,20 +608,15 @@
         messageDiv.style.display = 'block';
         messageDiv.textContent = text;
         messageDiv.style.backgroundColor = isSuccess ? '#e9e0d3' : '#f3e0d4';
-        messageDiv.style.color = '#6f4e2e';
-        messageDiv.style.opacity = '1';
         setTimeout(() => {
-            if (messageDiv.textContent === text) {
-                messageDiv.style.opacity = '0';
-                setTimeout(() => {
-                    messageDiv.style.display = 'none';
-                    messageDiv.style.opacity = '';
-                }, 400);
-            }
+            messageDiv.style.opacity = '0';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+                messageDiv.style.opacity = '';
+            }, 400);
         }, 4500);
     }
 
-    // загрузка сохранённых данных из localStorage
     const savedName = localStorage.getItem('wedding_final_name');
     const savedAtt = localStorage.getItem('wedding_final_att');
     const savedComment = localStorage.getItem('wedding_final_comment');
@@ -762,7 +633,7 @@
         
         const name = nameInput.value.trim();
         if (!name) {
-            showMessage('Пожалуйста, напишите ваше имя', false);
+            showMessage('Пожалуйста, укажите ваше имя', false);
             return;
         }
         
@@ -774,13 +645,12 @@
             }
         }
         if (!selected) {
-            showMessage('Выберите, будете ли вы на свадьбе (да / нет)', false);
+            showMessage('Выберите, будете ли вы на свадьбе', false);
             return;
         }
         
         const comment = commentInput.value.trim();
 
-        // сохраняем локально
         localStorage.setItem('wedding_final_name', name);
         localStorage.setItem('wedding_final_att', selected);
         localStorage.setItem('wedding_final_comment', comment);
@@ -790,25 +660,9 @@
         if (sent) {
             showMessage(`${name}, спасибо! Ваш ответ: «${selected}». ${comment ? 'Ваше пожелание сохранено ♡' : ''} Данные отправлены!`, true);
         } else {
-            showMessage(`${name}, спасибо! Ваш ответ сохранён локально. Мы обязательно увидим!`, true);
+            showMessage(`${name}, спасибо! Ваш ответ сохранён локально.`, true);
         }
-
-        const btn = document.getElementById('submitBtn');
-        btn.style.transform = 'scale(0.97)';
-        setTimeout(() => { btn.style.transform = ''; }, 200);
     });
-
-    // небольшая анимация появления блоков при скролле (для плавности)
-    const blocks = document.querySelectorAll('.content-block');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-    blocks.forEach(block => observer.observe(block));
 </script>
 </body>
 </html>
