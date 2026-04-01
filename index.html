@@ -63,6 +63,10 @@
             transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
         }
 
+        .hero-image-wrapper:hover .hero-image {
+            transform: scale(1.02);
+        }
+
         .hero-overlay {
             position: absolute;
             bottom: 0;
@@ -127,9 +131,9 @@
             color: #5a4a38;
             max-width: 90%;
             margin: 0 auto;
-            font-weight: 400;
         }
 
+        /* Таймер */
         .timer-wrapper {
             background: linear-gradient(135deg, #fef7ef, #fff9f2);
             border-radius: 28px;
@@ -178,6 +182,7 @@
             margin-top: 0.3rem;
         }
 
+        /* Локация */
         .location-card {
             background: linear-gradient(135deg, #fffbf5, #fef7ef);
             border-radius: 28px;
@@ -188,11 +193,27 @@
             transition: all 0.4s;
             border: 1px solid #f1e6db;
             cursor: pointer;
+            position: relative;
         }
 
         .location-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            border-color: #e2d0be;
+        }
+
+        .location-card::after {
+            content: '📍';
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .location-card:hover::after {
+            opacity: 0.6;
         }
 
         .location-name {
@@ -214,38 +235,42 @@
             margin-right: 6px;
         }
 
-        /* расписание — только нужные пункты с оригинальными текстами */
-        .schedule-simple {
+        /* Расписание */
+        .schedule-grid {
             margin: 1.5rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
         }
-        .schedule-simple-item {
+
+        .schedule-item {
             display: flex;
             align-items: baseline;
             justify-content: center;
             gap: 1rem;
-            padding: 1rem 1rem;
-            background: #fefaf5;
-            border-radius: 60px;
-            border: 1px solid #f0e2d4;
-            transition: all 0.25s;
+            padding: 0.9rem 0;
+            border-bottom: 1px dashed #efe3d6;
+            transition: all 0.3s;
         }
-        .schedule-simple-time {
+
+        .schedule-item:hover {
+            transform: translateX(5px);
+            background: rgba(201, 170, 123, 0.03);
+            padding-left: 10px;
+        }
+
+        .schedule-time {
             font-weight: 700;
             color: #b87a4b;
-            min-width: 75px;
-            font-family: 'Montserrat', monospace;
-            font-size: 1.1rem;
-        }
-        .schedule-simple-desc {
-            color: #5a4a38;
-            text-align: left;
-            flex: 1;
+            min-width: 85px;
             font-size: 0.95rem;
         }
 
+        .schedule-desc {
+            color: #5a4a38;
+            text-align: left;
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        /* Дресс-код */
         .dresscode-block {
             background: linear-gradient(135deg, #fef9f2, #fbf4ea);
             border-radius: 24px;
@@ -284,18 +309,18 @@
             line-height: 1.55;
         }
 
-        /* форма — радио-кнопка слева, текст справа */
+        /* Форма */
         .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
+            margin-bottom: 1.3rem;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 500;
             color: #b87a4b;
-            margin-bottom: 0.65rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
         }
 
         input {
@@ -304,49 +329,41 @@
             border: 1px solid #e5d8cb;
             border-radius: 60px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             background: white;
+            transition: all 0.3s;
         }
 
         input:focus {
             outline: none;
             border-color: #c9aa7b;
+            box-shadow: 0 0 0 3px rgba(201, 170, 123, 0.2);
         }
 
-        .radio-group-modern {
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
             background: #ffffff;
-            border-radius: 28px;
+            padding: 12px 20px;
+            border-radius: 60px;
             border: 1px solid #e5d8cb;
-            padding: 0.25rem 0;
         }
 
-        .radio-option {
+        .radio-group label {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 18px;
-            cursor: pointer;
-            border-radius: 40px;
-        }
-
-        .radio-option:hover {
-            background: #fef7ef;
-        }
-
-        .radio-option input[type="radio"] {
-            width: 20px;
-            height: 20px;
-            margin: 0;
-            flex-shrink: 0;
-            accent-color: #b87a4b;
-        }
-
-        .radio-option .radio-text {
+            gap: 10px;
+            font-weight: normal;
+            margin-bottom: 0;
             font-size: 1rem;
-            font-weight: 500;
-            color: #4d3e2c;
-            text-align: left;
-            flex: 1;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .radio-group label:hover {
+            color: #b87a4b;
+            transform: translateX(5px);
         }
 
         button {
@@ -361,11 +378,19 @@
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 0.8rem;
+            box-shadow: 0 6px 14px rgba(184, 122, 75, 0.25);
         }
 
-        button:hover {
+        button:hover:not(:disabled) {
             background: linear-gradient(135deg, #c98b5a, #ae6e42);
             transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(184, 122, 75, 0.35);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .form-message {
@@ -386,6 +411,11 @@
             color: #b8a688;
             background: #fefcf9;
             border-top: 1px solid #f0e8df;
+        }
+
+        .footer i {
+            color: #c9aa7b;
+            margin: 0 4px;
         }
 
         .ornament {
@@ -409,19 +439,17 @@
                 min-width: 60px;
                 padding: 0.5rem 0.8rem;
             }
-            .schedule-simple-time {
-                min-width: 65px;
-                font-size: 1rem;
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
             }
-            .schedule-simple-desc {
-                font-size: 0.85rem;
+            .schedule-time {
+                min-width: auto;
             }
-            .radio-option {
-                padding: 10px 14px;
-                gap: 10px;
-            }
-            .radio-option .radio-text {
-                font-size: 0.92rem;
+            .radio-group label {
+                white-space: nowrap;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -456,9 +484,7 @@
 
     <div class="content-block delay-3" style="padding-top: 0;">
         <div class="timer-wrapper">
-            <div class="timer-title">
-                <i class="far fa-hourglass-half"></i> До нашей свадьбы осталось
-            </div>
+            <div class="timer-title"><i class="far fa-hourglass-half"></i> До нашей свадьбы осталось</div>
             <div class="timer-grid" id="timerGrid">
                 <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">дней</div></div>
                 <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">часов</div></div>
@@ -468,39 +494,30 @@
         </div>
     </div>
 
-    <!-- расписание: только 14:00, 17:00, 22:00 с оригинальными текстами -->
     <div class="content-block delay-4">
-        <div class="schedule-simple">
-            <div class="schedule-simple-item">
-                <div class="schedule-simple-time">14:00</div>
-                <div class="schedule-simple-desc">встречаемся, знакомимся</div>
-            </div>
-            <div class="schedule-simple-item">
-                <div class="schedule-simple-time">17:00</div>
-                <div class="schedule-simple-desc">сладкая традиция, без которой не обойтись — торт</div>
-            </div>
-            <div class="schedule-simple-item">
-                <div class="schedule-simple-time">22:00</div>
-                <div class="schedule-simple-desc">даже такой прекрасный вечер может закончиться</div>
-            </div>
+        <div class="schedule-grid">
+            <div class="schedule-item"><div class="schedule-time">14:00</div><div class="schedule-desc">встречаемся, знакомимся</div></div>
+            <div class="schedule-item"><div class="schedule-time">14:30</div><div class="schedule-desc">тост от родителей</div></div>
+            <div class="schedule-item"><div class="schedule-time">15:00</div><div class="schedule-desc">тост от гостей, поздравления + антракт</div></div>
+            <div class="schedule-item"><div class="schedule-time">16:00</div><div class="schedule-desc">выступления, конкурсы, живая атмосфера</div></div>
+            <div class="schedule-item"><div class="schedule-time">17:00</div><div class="schedule-desc">сладкая традиция — торт</div></div>
+            <div class="schedule-item"><div class="schedule-time">18:30</div><div class="schedule-desc">дискотека, танцы до вечера</div></div>
+            <div class="schedule-item"><div class="schedule-time">22:00</div><div class="schedule-desc">даже такой прекрасный вечер может закончиться</div></div>
         </div>
     </div>
 
     <div class="content-block delay-5">
         <div class="dresscode-block">
-            <div class="dresscode-title">
-                <i class="fas fa-feather-alt"></i> Дресс-код <i class="fas fa-feather-alt"></i>
-            </div>
+            <div class="dresscode-title"><i class="fas fa-feather-alt"></i> Дресс-код <i class="fas fa-feather-alt"></i></div>
             <div class="dresscode-text">
                 Будем искренне рады видеть вас в том наряде, в котором вам комфортно и радостно.<br>
-                Лишь с небольшой просьбой — <strong>выбрать спокойные, нежные оттенки</strong>, чтобы наш праздник оставался лёгким и гармоничным.
+                Лишь с небольшой душевной просьбой — <strong>выбрать спокойные, нежные оттенки</strong>, чтобы наш праздник оставался лёгким и гармоничным.
             </div>
         </div>
     </div>
 
-    <!-- форма с радиокнопками: слева кнопка, справа текст "Да, буду" / "Не смогу" -->
     <div class="content-block delay-6">
-        <div style="font-size: 0.85rem; margin-bottom: 1.2rem; color: #b87a4b; text-align: center;">
+        <div style="font-size: 0.85rem; margin-bottom: 1.2rem; color: #b87a4b;">
             <i class="far fa-calendar-check"></i> Пожалуйста, заполните анкету гостя до <strong>1 мая 2026</strong>
         </div>
         <form id="rsvpForm">
@@ -510,42 +527,30 @@
             </div>
             <div class="form-group">
                 <label>Планируете ли присутствовать на свадьбе?</label>
-                <div class="radio-group-modern">
-                    <label class="radio-option">
-                        <input type="radio" name="attendance" value="С радостью приду! ✨" required>
-                        <span class="radio-text">✨ Да, буду</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="attendance" value="К сожалению, не смогу 🌿">
-                        <span class="radio-text">🌿 Не смогу</span>
-                    </label>
+                <div class="radio-group">
+                    <label><input type="radio" name="attendance" value="С радостью приду! ✨" required> <span>✨ Да, буду</span></label>
+                    <label><input type="radio" name="attendance" value="К сожалению, не смогу 🌿"> <span>🌿 Не смогу</span></label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Пожелания или комментарий</label>
                 <input type="text" id="comment" placeholder="Ваши тёплые слова...">
             </div>
-            <button type="submit" id="submitBtn">
-                <i class="fas fa-envelope"></i> Отправить подтверждение
-            </button>
+            <button type="submit" id="submitBtn"><i class="fas fa-envelope"></i> Отправить подтверждение</button>
             <div id="formMessage" class="form-message"></div>
         </form>
-        <div style="margin-top: 1rem; font-size: 0.7rem; color: #c9aa7b; text-align: center;">
-            Спасибо! Ваши данные будут отправлены!
-        </div>
+        <div style="margin-top: 1rem; font-size: 0.7rem; color: #c9aa7b;">Спасибо! Ваши данные отправлены!</div>
     </div>
 
-    <div class="footer">
-        <i class="fas fa-heart"></i> Булат & Екатерина · 26.06.2026 · Усть-Курдюм <i class="fas fa-heart"></i>
-    </div>
+    <div class="footer"><i class="fas fa-heart"></i> Булат & Екатерина · 26.06.2026 · Усть-Курдюм <i class="fas fa-heart"></i></div>
 </div>
 
 <script>
+    // ========== ТАЙМЕР ==========
     function updateTimer() {
-        const targetDate = new Date(2026, 5, 26, 14, 0, 0);
+        const target = new Date(2026, 5, 26, 14, 0, 0);
         const now = new Date();
-        const diff = targetDate - now;
-
+        const diff = target - now;
         if (diff <= 0) {
             document.getElementById('days').innerText = '00';
             document.getElementById('hours').innerText = '00';
@@ -553,36 +558,78 @@
             document.getElementById('seconds').innerText = '00';
             return;
         }
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (86400000)) / (3600000));
-        const minutes = Math.floor((diff % 3600000) / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-
-        document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-        document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-        document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-        document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        document.getElementById('days').innerText = Math.floor(diff / (1000*60*60*24)).toString().padStart(2, '0');
+        document.getElementById('hours').innerText = Math.floor((diff % (86400000)) / 3600000).toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
     }
-
     updateTimer();
     setInterval(updateTimer, 1000);
 
-    const ALBATO_WEBHOOK_URL = 'https://h.albato.ru/wh/38/1lfe9dn/toNai0Rf0Va3S2ajIxbZE1taAfiMcNEif1UOAfMPZl4/';
-    
-    const locationCard = document.getElementById('locationCard');
-    if (locationCard) {
-        locationCard.addEventListener('click', function() {
-            const lat = 51.653947;
-            const lng = 46.187279;
-            const address = encodeURIComponent('Саратовская область, село Усть-Курдюм, Большая Советская улица, 110/1');
-            window.open(`https://yandex.ru/maps/?pt=${lng},${lat}&z=18&l=map&text=${address}`, '_blank');
-        });
+    // ========== КАРТА ==========
+    document.getElementById('locationCard')?.addEventListener('click', () => {
+        window.open('https://yandex.ru/maps/?pt=46.187279,51.653947&z=18&l=map&text=Саратовская%20область%2C%20село%20Усть-Курдюм%2C%20Большая%20Советская%20улица%2C%20110%2F1', '_blank');
+    });
+
+    // ========== ФОРМА С ЗАЩИТОЙ ОТ ДУБЛЕЙ ==========
+    const form = document.getElementById('rsvpForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const messageDiv = document.getElementById('formMessage');
+    const nameInput = document.getElementById('guestName');
+    const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+    const commentInput = document.getElementById('comment');
+
+    let isSubmitting = false; // флаг блокировки повторных нажатий
+
+    function showMessage(text, isSuccess = true) {
+        messageDiv.style.display = 'block';
+        messageDiv.textContent = text;
+        messageDiv.style.backgroundColor = isSuccess ? '#e9e0d3' : '#f3e0d4';
+        messageDiv.style.color = '#6f4e2e';
+        setTimeout(() => {
+            if (messageDiv.textContent === text) {
+                messageDiv.style.opacity = '0';
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                    messageDiv.style.opacity = '';
+                }, 400);
+            }
+        }, 4000);
     }
-    
-    async function sendToGoogleTable(name, attendance, comment) {
+
+    // Очистка полей формы
+    function resetForm() {
+        nameInput.value = '';
+        attendanceRadios.forEach(radio => radio.checked = false);
+        commentInput.value = '';
+    }
+
+    // Валидация: проверяем, что имя заполнено и выбран вариант ответа
+    function validateForm() {
+        const name = nameInput.value.trim();
+        if (!name) {
+            showMessage('❌ Пожалуйста, укажите ваше имя', false);
+            return false;
+        }
+        
+        let isSelected = false;
+        for (let radio of attendanceRadios) {
+            if (radio.checked) {
+                isSelected = true;
+                break;
+            }
+        }
+        if (!isSelected) {
+            showMessage('❌ Вы ничего не ответили. Пожалуйста, выберите "Да, буду" или "Не смогу"', false);
+            return false;
+        }
+        return true;
+    }
+
+    // Отправка в Albato
+    async function sendToTable(name, attendance, comment) {
         try {
-            const response = await fetch(ALBATO_WEBHOOK_URL, {
+            const response = await fetch('https://h.albato.ru/wh/38/1lfe9dn/toNai0Rf0Va3S2ajIxbZE1taAfiMcNEif1UOAfMPZl4/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -594,49 +641,29 @@
             });
             return response.ok;
         } catch (error) {
+            console.error('Ошибка отправки:', error);
             return false;
-        }
-    }
-    
-    const form = document.getElementById('rsvpForm');
-    const messageDiv = document.getElementById('formMessage');
-    const nameInput = document.getElementById('guestName');
-    const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
-    const commentInput = document.getElementById('comment');
-
-    function showMessage(text, isSuccess = true) {
-        messageDiv.style.display = 'block';
-        messageDiv.textContent = text;
-        messageDiv.style.backgroundColor = isSuccess ? '#e9e0d3' : '#f3e0d4';
-        setTimeout(() => {
-            messageDiv.style.opacity = '0';
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-                messageDiv.style.opacity = '';
-            }, 400);
-        }, 4500);
-    }
-
-    const savedName = localStorage.getItem('wedding_final_name');
-    const savedAtt = localStorage.getItem('wedding_final_att');
-    const savedComment = localStorage.getItem('wedding_final_comment');
-    if (savedName) nameInput.value = savedName;
-    if (savedComment) commentInput.value = savedComment;
-    if (savedAtt) {
-        for (let radio of attendanceRadios) {
-            if (radio.value === savedAtt) radio.checked = true;
         }
     }
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const name = nameInput.value.trim();
-        if (!name) {
-            showMessage('Пожалуйста, укажите ваше имя', false);
+        // Если уже отправляем — блокируем повторное нажатие
+        if (isSubmitting) {
+            showMessage('⏳ Подождите, ваш ответ уже отправляется...', false);
             return;
         }
         
+        // Валидация
+        if (!validateForm()) return;
+        
+        // Блокируем кнопку
+        isSubmitting = true;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Отправка...';
+        
+        const name = nameInput.value.trim();
         let selected = null;
         for (let radio of attendanceRadios) {
             if (radio.checked) {
@@ -644,25 +671,35 @@
                 break;
             }
         }
-        if (!selected) {
-            showMessage('Выберите, будете ли вы на свадьбе', false);
-            return;
-        }
-        
         const comment = commentInput.value.trim();
-
-        localStorage.setItem('wedding_final_name', name);
-        localStorage.setItem('wedding_final_att', selected);
-        localStorage.setItem('wedding_final_comment', comment);
         
-        const sent = await sendToGoogleTable(name, selected, comment);
+        // Отправляем
+        const success = await sendToTable(name, selected, comment);
         
-        if (sent) {
-            showMessage(`${name}, спасибо! Ваш ответ: «${selected}». ${comment ? 'Ваше пожелание сохранено ♡' : ''} Данные отправлены!`, true);
+        if (success) {
+            showMessage(`✅ ${name}, спасибо! Ваш ответ: «${selected}». ${comment ? 'Ваше пожелание сохранено ♡' : ''}`, true);
+            resetForm(); // Очищаем поля после успешной отправки
         } else {
-            showMessage(`${name}, К сожалению, не вышло отправить, проверьте соединение с сетью.`, true);
+            showMessage(`❌ Произошла ошибка. Попробуйте еще раз или свяжитесь с нами.`, false);
         }
+        
+        // Разблокируем кнопку
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-envelope"></i> Отправить подтверждение';
     });
+    
+    // Анимация появления блоков
+    const blocks = document.querySelectorAll('.content-block');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    blocks.forEach(block => observer.observe(block));
 </script>
 </body>
 </html>
