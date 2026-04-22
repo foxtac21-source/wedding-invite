@@ -480,40 +480,56 @@
 </head>
 <body>
 <script>
-    // ========== РЕЖИМ ТЕХНИЧЕСКИХ РАБОТ ==========
-    // Меняй тут: true = сайт недоступен, false = всё работает
-    const MAINTENANCE_MODE = true;
+    // ========== РЕЖИМ ТЕХНИЧЕСКИХ РАБОТ (САМЫЙ ПЕРВЫЙ) ==========
+    const MAINTENANCE_MODE = true;  // true = сайт недоступен, false = работает
     
     if (MAINTENANCE_MODE) {
-        // Полностью заменяем содержимое страницы на заглушку
-        document.body.innerHTML = `
-            <div style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh;
-                background: #f5efe7;
-                font-family: 'Montserrat', sans-serif;
-                text-align: center;
-                padding: 20px;
-                margin: 0;
-            ">
-                <div style="
-                    background: white;
-                    border-radius: 32px;
-                    padding: 45px 30px;
-                    max-width: 400px;
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-                ">
-                    <div style="font-size: 3.5rem; margin-bottom: 20px;">🌿</div>
-                    <h2 style="color: #b87a4b; font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 10px;">Скоро вернёмся</h2>
-                    <p style="color: #5a4a38; margin-top: 15px; line-height: 1.5;">На сайте ведутся технические работы. Пожалуйста, загляните позже.</p>
-                    <p style="color: #b8a688; font-size: 0.8rem; margin-top: 25px;">Булат & Екатерина ❤️</p>
+        // Полностью перезаписываем документ
+        document.open();
+        document.write(`
+            <!DOCTYPE html>
+            <html lang="ru">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Технические работы</title>
+                <style>
+                    * { margin: 0; padding: 0; box-sizing: border-box; }
+                    body {
+                        background: #f5efe7;
+                        font-family: 'Montserrat', sans-serif;
+                        min-height: 100vh;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 20px;
+                    }
+                    .message {
+                        background: white;
+                        border-radius: 32px;
+                        padding: 45px 30px;
+                        max-width: 400px;
+                        text-align: center;
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                    }
+                    .emoji { font-size: 3.5rem; margin-bottom: 20px; }
+                    h2 { color: #b87a4b; font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 10px; }
+                    p { color: #5a4a38; line-height: 1.5; margin-top: 15px; }
+                    .small { color: #b8a688; font-size: 0.8rem; margin-top: 25px; }
+                </style>
+            </head>
+            <body>
+                <div class="message">
+                    <div class="emoji">🌿</div>
+                    <h2>Скоро вернёмся</h2>
+                    <p>На сайте ведутся технические работы.<br>Пожалуйста, загляните позже.</p>
+                    <p class="small">Булат & Екатерина ❤️</p>
                 </div>
-            </div>
-        `;
-        // Останавливаем выполнение остального кода
-        throw new Error('Сайт на техническом обслуживании');
+            </body>
+            </html>
+        `);
+        document.close();
+        throw new Error('MAINTENANCE_MODE включён');
     }
 </script>
 <div class="container">
