@@ -479,7 +479,43 @@
     </style>
 </head>
 <body>
-
+<script>
+    // ========== РЕЖИМ ТЕХНИЧЕСКИХ РАБОТ ==========
+    // Меняй тут: true = сайт недоступен, false = всё работает
+    const MAINTENANCE_MODE = true;
+    
+    if (MAINTENANCE_MODE) {
+        // Полностью заменяем содержимое страницы на заглушку
+        document.body.innerHTML = `
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                background: #f5efe7;
+                font-family: 'Montserrat', sans-serif;
+                text-align: center;
+                padding: 20px;
+                margin: 0;
+            ">
+                <div style="
+                    background: white;
+                    border-radius: 32px;
+                    padding: 45px 30px;
+                    max-width: 400px;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                ">
+                    <div style="font-size: 3.5rem; margin-bottom: 20px;">🌿</div>
+                    <h2 style="color: #b87a4b; font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 10px;">Скоро вернёмся</h2>
+                    <p style="color: #5a4a38; margin-top: 15px; line-height: 1.5;">На сайте ведутся технические работы. Пожалуйста, загляните позже.</p>
+                    <p style="color: #b8a688; font-size: 0.8rem; margin-top: 25px;">Булат & Екатерина ❤️</p>
+                </div>
+            </div>
+        `;
+        // Останавливаем выполнение остального кода
+        throw new Error('Сайт на техническом обслуживании');
+    }
+</script>
 <div class="container">
     <div class="hero-image-wrapper">
         <img src="blaka.jpg" alt="Булат и Екатерина" class="hero-image">
